@@ -51,8 +51,7 @@ var app = new Vue(
         this.toDoList.push({
           testo : this.addText,
           done : false
-          }
-        );
-      }
+        })
+      },
     }
   });
