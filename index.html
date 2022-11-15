@@ -14,7 +14,35 @@
 </head>
 <body>
   
+  <div id="root">
 
+    <div class="text-center mt-3">
+      <input type="text" class="me-3" v-model="addText" placeholder="Inserisci nuova task">
+    <button class="btn btn-primary" @click="aggiungiTask">TO DO</button>
+    </div>
+
+    <div class="p-5">
+      <ul v-if="toDoList.length > 0" class="list-group">
+        <li v-for="(elem, index) in toDoList" :key="index" class="list-group-item list-group-item-action d-flex justify-content-between">
+          <span @click="taskDone(index, elem)" :class="(elem.done == true) ? 'text-decoration-line-through' : '' ">{{index}} | {{elem.testo}}</span>
+          <i class="fa-solid fa-xmark" @click="rimuoviElem(index)"></i>
+        </li>
+      </ul>
+      <h3 v-else>Hai completato la ToDo List</h3>
+    </div>
+
+
+
+    <h3 class="ms-5 mt-5">ToDo Completate:</h3>
+    <div class="px-5">
+      <ul v-if="toDoCompleted.length > 0" class="list-group">
+        <li v-for="(elem, index) in toDoCompleted" :key="index" class="list-group-item list-group-item-action d-flex justify-content-between">
+          <span @click="taskDone(index, elem)" :class="(elem.done == true) ? 'text-decoration-line-through' : '' ">{{index}} | {{elem.testo}}</span>
+          <i class="fa-solid fa-xmark" @click="rimuoviElemCompleted(index)"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
 
 
   <!-- BOOTSTRAP JS -->
